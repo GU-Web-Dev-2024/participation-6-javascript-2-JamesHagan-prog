@@ -50,28 +50,26 @@
         <div>
             <p id="message"></p>
         </div>
+        <div>
+            <button id="reset-button">Reset</button>
+        </div>
         <hr>
     </div>
 
     <script>
-        // JavaScript code goes here   
         let guess = 0;
         let num = Math.floor(Math.random() * 10);
-        // Added a click listener to the button (will be covered more in zyBook 7.4), 
-        // for now just use the following which:
-        // uses the document object and selects the element with a matching Id found in the DOM.
-        // adds an event listener (for a click) of that selected element.
-        // executes the code in the body of the anonymous function
+    
         document.getElementById('guess-button').addEventListener('click', function () {
-           let value = document.getElementById('guess-input').value;
-           if (value == num) {
+            let value = document.getElementById('guess-input').value;
+            if (value == num) {
                 document.getElementById('message').textContent = 'Congrats, you guessed right. You Win!';
                 return;
-           }
-           else {
+            }
+            else {
                 guess++;
-                if (guess == 3){
-                    document.getElementById('message').textContent = 'Out of Guesses! You Lose';
+                if (guess >= 3){
+                    document.getElementById('message').textContent = 'Out of Guesses! You Lose. Erm What the Sigma!';
                     return;
                 }
                 else {
@@ -83,6 +81,11 @@
                     }
                 }
            }
+        });
+        document.getElementById('reset-button').addEventListener('click', function () {
+            guess = 0;
+            num = Math.floor(Math.random() * 10);
+            document.getElementById('message').textContent = 'New Number generated, guesses reset';
         });
 
     </script>
